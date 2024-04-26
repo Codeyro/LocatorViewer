@@ -139,8 +139,8 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         global selectedPort
         if checked:
             ser = serial.Serial(selectedPort, baudrate=selectedSpeed)
-            sleep(1)
             self.combobox.setDisabled(True)
+            sleep(2)
             self.rotatelButton.setEnabled(True)
             self.rotaterButton.setEnabled(True)
             self.runButton.setEnabled(True)
@@ -190,9 +190,9 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.output()
 
     def scan(self):
-        self.runButton.setEnabled(False)  # Disable the button
-        self.rotatelButton.setEnabled(False)  # Disable the button
-        self.rotaterButton.setEnabled(False)  # Disable the button
+        self.runButton.setDisabled(True)  # Выключаем кнопку
+        self.rotatelButton.setDisabled(True)  # Выключаем кнопку
+        self.rotaterButton.setDisabled(True)  # Выключаем кнопку
 
         self.scanner = Scanner()  # Create a scanner thread
         self.scanner.progress.connect(self.update_progress)  # Connect the progress signal
@@ -204,9 +204,9 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.output()
 
     def task_complete(self):
-        self.runButton.setEnabled(True)  # Enable the button
-        self.rotatelButton.setEnabled(True)  # Enable the button
-        self.rotaterButton.setEnabled(True)  # Enable the button
+        self.runButton.setEnabled(True)  # Включаем кнопку
+        self.rotatelButton.setEnabled(True)  # Включаем кнопку
+        self.rotaterButton.setEnabled(True)  # Включаем кнопку
 
 
 # Основная программа
