@@ -34,8 +34,8 @@ class Scanner(QObject):
         while read != 'e':
             points.append(read)
             read = ser.readline().decode().strip()
-            self.progress()
-        self.finished()
+            self.progress.emit()
+        self.finished.emit()
 
 
 class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
@@ -101,7 +101,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
             i = 1
             while i != len(points):
                 a = str(points[i])
-                b = a.split(',')
+                b = a.split('%')
                 if float(b[1]) < int(5000):
                     x = sin(0.0174533 * float(b[0])) * float(b[1]) * zoom
                     y = cos(0.0174533 * float(b[0])) * float(b[1]) * zoom
