@@ -5,6 +5,7 @@
     <img src=".idea/icon.svg" alt="" width="100" height="100">
   </a>
 
+
   <!--<h1>Locator viewer</h1>-->
 </div>
 <!--
@@ -22,7 +23,8 @@
 </div>
 -->
 
-<img alt="Screenshot" src=".idea/screenshot.png" align="center"/>
+<img alt="Screenshot" src=".idea/screenshot.png"/>
+
 
 ## О проекте
 
