@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="icon.svg" alt="" width="100" height="100">
+    <img src=".idea/icon.svg" alt="" width="100" height="100">
   </a>
 
   <!--<h1>Locator viewer</h1>-->
@@ -22,6 +22,7 @@
 </div>
 -->
 
+<img alt="Screenshot" src=".idea/screenshot.png" align="center"/>
 
 ## О проекте
 
