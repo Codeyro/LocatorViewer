@@ -1,19 +1,19 @@
 # Импортируем библиотеки
-from math import sin, cos
 from sys import argv
 from time import sleep
-import threading
-import serial.tools.list_ports
+from math import sin, cos
 from PyQt6 import QtWidgets, QtCore, QtGui
 from PyQt6.QtCore import pyqtSignal, QObject
+import threading
+import serial.tools.list_ports
 import design
 
 # Задаём переменные
-ser = serial.Serial()
-points = []
 selectedPort = None
 selectedSpeed = 9600
 zoom = 0.1
+ser = serial.Serial()
+points = []
 
 
 # Создаём классы
@@ -43,11 +43,10 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # Инициализация дизайна
         self.scanner = None
-        self.updateButton.clicked.connect(self.updatePorts)
-        self.combobox.currentTextChanged.connect(self.selectPort)
         self.rotatelButton.setDisabled(True)
         self.rotaterButton.setDisabled(True)
         self.runButton.setDisabled(True)
+        self.updateButton.clicked.connect(self.updatePorts)
         self.rotatelButton.pressed.connect(self.turnl)
         self.rotaterButton.pressed.connect(self.turnr)
         self.runButton.clicked.connect(self.scan)
@@ -57,8 +56,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.zoompButton.clicked.connect(self.zoomp)
         self.zoommButton.clicked.connect(self.zoomm)
         self.updatePorts()  # Обновляем порты
-        self.output()
-        points.clear()
+        self.clearOutput()  # Обновляем вывод
 
     def output(self):
         scene = QtWidgets.QGraphicsScene()
@@ -66,48 +64,28 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         pen = QtGui.QPen(QtCore.Qt.PenStyle.NoPen)
         brush = QtGui.QBrush(QtCore.Qt.GlobalColor.lightGray)
 
-        i = 1
-        while i < 10:
-            rect = QtCore.QRectF(QtCore.QPointF((800 * i - 4000) * zoom, -3200 * zoom), QtCore.QSizeF(1, 6400 * zoom))
-            scene.addRect(rect, brush=brush, pen=pen)
-            i = i + 1
+        for i in range(1, 10):
+            fig = QtCore.QRectF(QtCore.QPointF((800 * i - 4000) * zoom, -3200 * zoom), QtCore.QSizeF(1, 6400 * zoom))
+            scene.addRect(fig, brush=brush, pen=pen)
 
-        i = 1
-        while i < 10:
-            rect = QtCore.QRectF(QtCore.QPointF(-3200 * zoom, (800 * i - 4000) * zoom), QtCore.QSizeF(6400 * zoom, 1))
-            scene.addRect(rect, brush=brush, pen=pen)
-            i = i + 1
-
-        brush = QtGui.QBrush(QtCore.Qt.GlobalColor.darkGray)
-        rect = QtCore.QRectF(QtCore.QPointF((800 * 5 - 4000) * zoom, -3200 * zoom), QtCore.QSizeF(1, 6400 * zoom))
-        scene.addRect(rect, brush=brush, pen=pen)
-        rect = QtCore.QRectF(QtCore.QPointF((800 * 1 - 4000) * zoom, -3200 * zoom), QtCore.QSizeF(1, 6400 * zoom))
-        scene.addRect(rect, brush=brush, pen=pen)
-        rect = QtCore.QRectF(QtCore.QPointF((800 * 9 - 4000) * zoom, -3200 * zoom), QtCore.QSizeF(1, 6400 * zoom))
-        scene.addRect(rect, brush=brush, pen=pen)
-        rect = QtCore.QRectF(QtCore.QPointF(-3200 * zoom, (800 * 5 - 4000) * zoom), QtCore.QSizeF(6400 * zoom, 1))
-        scene.addRect(rect, brush=brush, pen=pen)
-        rect = QtCore.QRectF(QtCore.QPointF(-3200 * zoom, (800 * 1 - 4000) * zoom), QtCore.QSizeF(6400 * zoom, 1))
-        scene.addRect(rect, brush=brush, pen=pen)
-        rect = QtCore.QRectF(QtCore.QPointF(-3200 * zoom, (800 * 9 - 4000) * zoom), QtCore.QSizeF(6400 * zoom, 1))
-        scene.addRect(rect, brush=brush, pen=pen)
+        for i in range(1, 10):
+            fig = QtCore.QRectF(QtCore.QPointF(-3200 * zoom, (800 * i - 4000) * zoom), QtCore.QSizeF(6400 * zoom, 1))
+            scene.addRect(fig, brush=brush, pen=pen)
 
         brush = QtGui.QBrush(QtCore.Qt.GlobalColor.darkGreen)
-        rect = QtCore.QRectF(QtCore.QPointF(-5, -6), QtCore.QSizeF(11, 12))
-        scene.addEllipse(rect, brush=brush, pen=pen)
+        fig = QtCore.QRectF(QtCore.QPointF(-7, -8), QtCore.QSizeF(15, 16))
+        scene.addEllipse(fig, brush=brush, pen=pen)
 
         brush = QtGui.QBrush(QtCore.Qt.GlobalColor.darkBlue)
-        if len(points) > 1:
-            i = 1
-            while i != len(points):
-                a = str(points[i])
-                b = a.split('%')
-                if float(b[1]) < int(5000):
-                    x = sin(0.0174533 * float(b[0])) * float(b[1]) * zoom
-                    y = cos(0.0174533 * float(b[0])) * float(b[1]) * zoom
-                    rect = QtCore.QRectF(QtCore.QPointF(x, y), QtCore.QSizeF(3, 3))
-                    scene.addRect(rect, brush=brush, pen=pen)
-                i = i + 1
+        if len(points) > 0:
+            for i in points:
+                a = str(i).split('%')
+                b = 0.0174533 * float(a[0])
+                if float(a[1]) < 5000:
+                    x = sin(b) * (float(a[1]) + 30) * zoom
+                    y = cos(b) * (float(a[1]) + 30) * zoom
+                    fig = QtCore.QRectF(QtCore.QPointF(x - 2, y - 2), QtCore.QSizeF(5, 5))
+                    scene.addEllipse(fig, brush=brush, pen=pen)
 
     def updatePorts(self):
         global selectedPort
@@ -130,14 +108,12 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
             self.combobox.addItem('Портов не найдено')
             self.connectButton.setDisabled(True)
 
-    def selectPort(self):
-        global selectedPort
-        selectedPort = self
-
     def connect(self, checked):
         global ser
         global selectedPort
+
         if checked:
+            selectedPort = self.combobox.currentText()
             ser = serial.Serial(selectedPort, baudrate=selectedSpeed)
             self.combobox.setDisabled(True)
             sleep(2)
@@ -195,8 +171,8 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.rotaterButton.setDisabled(True)  # Выключаем кнопку
 
         self.scanner = Scanner()  # Create a scanner thread
-        self.scanner.progress.connect(self.update_progress)  # Connect the progress signal
-        self.scanner.finished.connect(self.task_complete)  # Connect the finished signal
+        self.scanner.progress.connect(self.update_progress)  # Подключаем сигнал прогресса
+        self.scanner.finished.connect(self.task_complete)  # Подключаем сигнал окончания
         thread = threading.Thread(target=self.scanner.run)
         thread.start()
 
