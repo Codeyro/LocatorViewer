@@ -113,6 +113,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         global selectedPort
 
         if checked:
+            self.updateButton.setDisabled(True)
             selectedPort = self.combobox.currentText()
             ser = serial.Serial(selectedPort, baudrate=selectedSpeed)
             self.combobox.setDisabled(True)
@@ -126,6 +127,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
             self.rotaterButton.setDisabled(True)
             self.runButton.setDisabled(True)
             self.combobox.setEnabled(True)
+            self.updateButton.setEnabled(True)
 
     @staticmethod
     def turnr():
