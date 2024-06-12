@@ -105,7 +105,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
             self.connectButton.setEnabled(True)
         else:
             self.combobox.setDisabled(True)
-            self.combobox.addItem('Портов не найдено')
+            self.combobox.addItem('Устройства не найдены')
             self.connectButton.setDisabled(True)
 
     def connect(self, checked):
@@ -187,7 +187,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.rotaterButton.setEnabled(True)  # Включаем кнопку
 
 
-# Основная программа
+# Основной скрипт
 if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем, то:
     app = QtWidgets.QApplication(argv)  # Создаём новый экземпляр QApplication
     window = MainWindow()  # Создаём объект окна из класса MainWindow
