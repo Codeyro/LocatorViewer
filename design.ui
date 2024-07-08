@@ -70,7 +70,7 @@ background-color: rgba(6, 192, 37, 40);
 image: url(images/disconnect.png);
 }
 
-QPushButton#runButton, QPushButton#clearButton {
+QPushButton#runButton, QPushButton#clearButton, QPushButton#settingsButton, QPushButton#exportButton {
 border: 1px solid rgb(160, 160, 160);
 border-radius: 4px;
 }
@@ -106,6 +106,7 @@ border: 1px solid rgb(160, 160, 160);
 border-top-left-radius: 4px;
 border-bottom-left-radius: 4px;
 padding-left: 7px;
+padding-right: 0px;
 color: rgb(0, 0, 0);
 }
 
@@ -239,6 +240,57 @@ background-color: rgba(183, 183, 184, 255);
         <number>4</number>
        </property>
        <item>
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="settingsButton">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>Очистить вывод</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>images/menu.svg</normaloff>images/menu.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_6">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -264,7 +316,7 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="minimumSize">
           <size>
-           <width>152</width>
+           <width>155</width>
            <height>30</height>
           </size>
          </property>
@@ -402,7 +454,7 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>images/rotate l.png</normaloff>images/rotate l.png</iconset>
+           <normaloff>images/rotate l.svg</normaloff>images/rotate l.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -437,7 +489,7 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>images/rotate r.png</normaloff>images/rotate r.png</iconset>
+           <normaloff>images/rotate r.svg</normaloff>images/rotate r.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -494,7 +546,13 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>images/start.png</normaloff>images/start.png</iconset>
+           <normaloff>images/start.svg</normaloff>images/start.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -506,6 +564,57 @@ background-color: rgba(183, 183, 184, 255);
          <property name="sizeHint" stdset="0">
           <size>
            <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exportButton">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>Очистить вывод</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>images/export.svg</normaloff>images/export.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
            <height>20</height>
           </size>
          </property>
@@ -536,133 +645,12 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>images/clear.png</normaloff>images/clear.png</iconset>
+           <normaloff>images/clear.svg</normaloff>images/clear.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
-           <width>14</width>
-           <height>14</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>10</width>
-           <height>10</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="zoommButton">
-         <property name="minimumSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>Уменьшить масштаб</string>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>images/zoom-.png</normaloff>images/zoom-.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="zoomrButton">
-         <property name="minimumSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>Сбросить масштаб</string>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>images/zoom=.png</normaloff>images/zoom=.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="zoompButton">
-         <property name="minimumSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>Увеличить масштаб</string>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>images/zoom+.png</normaloff>images/zoom+.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>20</width>
-           <height>20</height>
+           <width>18</width>
+           <height>18</height>
           </size>
          </property>
         </widget>
@@ -677,6 +665,9 @@ background-color: rgba(183, 183, 184, 255);
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="cursor">
+       <cursorShape>CrossCursor</cursorShape>
       </property>
      </widget>
     </item>

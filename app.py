@@ -56,13 +56,8 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.runButton.clicked.connect(self.scan)
         self.connectButton.clicked.connect(self.connect)
         self.clearButton.clicked.connect(self.clearOutput)
-        self.zoomrButton.clicked.connect(self.zoomr)
-        self.zoompButton.clicked.connect(self.zoomp)
-        self.zoommButton.clicked.connect(self.zoomm)
         self.updatePorts()  # Обновляем порты
-        self.clearOutput()  # Обновляем вывод
-
-        self.output()
+        self.clearOutput()  # Очищаем вывод
 
     def output(self):
         global x, y
@@ -78,7 +73,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         pen = pg.mkPen(color=(10, 50, 255), width=3)
         self.graphWidget.clear()
         self.graphWidget.plot(x, y, pen=pen, symbol="o", symbolSize=10, symbolBrush="b", symbolPen=None)
-        self.graphWidget.plot([0], [0], pen=pen, symbol="o", symbolSize=15, symbolBrush="#00aa22", symbolPen=None)
+        self.graphWidget.plot([0], [0], pen=pen, symbol="o", symbolSize=16, symbolBrush="#00aa22", symbolPen=None)
 
     def updatePorts(self):
         global selectedPort
@@ -136,30 +131,9 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         ser.write(b"l")
         ser.write(b" ")
 
-    def zoomr(self):
-        global zoom
-        zoom = 0.1
-        self.output()
-        self.zoommButton.setEnabled(True)
-
-    def zoomp(self):
-        global zoom
-        zoom = zoom + 0.05
-        self.output()
-        self.zoommButton.setEnabled(True)
-
-    def zoomm(self):
-        global zoom
-        if zoom > 0.09:
-            zoom = zoom - 0.05
-            self.output()
-            if zoom < 0.09:
-                self.zoommButton.setDisabled(True)
-
     def clearOutput(self):
         global x, y
-        x = []
-        y = []
+        x, y = [], []
         self.output()
 
     def scan(self):
