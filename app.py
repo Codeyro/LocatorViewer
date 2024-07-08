@@ -2,18 +2,20 @@
 from sys import argv
 from time import sleep
 from math import sin, cos
-from PyQt6 import QtWidgets, QtCore, QtGui
+from PyQt6 import QtWidgets
 from PyQt6.QtCore import pyqtSignal, QObject
 import threading
+import pyqtgraph as pg
 import serial.tools.list_ports
 import design
 
 # Задаём переменные
 selectedPort = None
 selectedSpeed = 9600
-zoom = 0.1
 ser = serial.Serial()
 points = []
+x = []
+y = []
 
 
 # Создаём классы
@@ -43,6 +45,8 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # Инициализация дизайна
         self.scanner = None
+        self.graphWidget.setBackground('#eef0f0')
+        self.graphWidget.showGrid(x=True, y=True)
         self.rotatelButton.setDisabled(True)
         self.rotaterButton.setDisabled(True)
         self.runButton.setDisabled(True)
@@ -58,34 +62,23 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.updatePorts()  # Обновляем порты
         self.clearOutput()  # Обновляем вывод
 
+        self.output()
+
     def output(self):
-        scene = QtWidgets.QGraphicsScene()
-        self.graphicsView.setScene(scene)
-        pen = QtGui.QPen(QtCore.Qt.PenStyle.NoPen)
-        brush = QtGui.QBrush(QtCore.Qt.GlobalColor.lightGray)
-
-        for i in range(1, 10):
-            fig = QtCore.QRectF(QtCore.QPointF((800 * i - 4000) * zoom, -3200 * zoom), QtCore.QSizeF(1, 6400 * zoom))
-            scene.addRect(fig, brush=brush, pen=pen)
-
-        for i in range(1, 10):
-            fig = QtCore.QRectF(QtCore.QPointF(-3200 * zoom, (800 * i - 4000) * zoom), QtCore.QSizeF(6400 * zoom, 1))
-            scene.addRect(fig, brush=brush, pen=pen)
-
-        brush = QtGui.QBrush(QtCore.Qt.GlobalColor.darkGreen)
-        fig = QtCore.QRectF(QtCore.QPointF(-7, -8), QtCore.QSizeF(15, 16))
-        scene.addEllipse(fig, brush=brush, pen=pen)
-
-        brush = QtGui.QBrush(QtCore.Qt.GlobalColor.darkBlue)
+        global x, y
+        x = []
+        y = []
         if len(points) > 0:
             for i in points:
                 a = str(i).split('%')
                 b = 0.0174533 * float(a[0])
                 if float(a[1]) < 5000:
-                    x = sin(b) * (float(a[1]) + 30) * zoom
-                    y = cos(b) * (float(a[1]) + 30) * zoom
-                    fig = QtCore.QRectF(QtCore.QPointF(x - 2, y - 2), QtCore.QSizeF(5, 5))
-                    scene.addEllipse(fig, brush=brush, pen=pen)
+                    x.append(sin(b) * (float(a[1]) + 30))
+                    y.append(cos(b) * (float(a[1]) + 30))
+        pen = pg.mkPen(color=(10, 50, 255), width=3)
+        self.graphWidget.clear()
+        self.graphWidget.plot(x, y, pen=pen, symbol="o", symbolSize=10, symbolBrush="b", symbolPen=None)
+        self.graphWidget.plot([0], [0], pen=pen, symbol="o", symbolSize=15, symbolBrush="#00aa22", symbolPen=None)
 
     def updatePorts(self):
         global selectedPort
@@ -105,7 +98,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
             self.connectButton.setEnabled(True)
         else:
             self.combobox.setDisabled(True)
-            self.combobox.addItem('Портов не найдено')
+            self.combobox.addItem('Устройства не найдены')
             self.connectButton.setDisabled(True)
 
     def connect(self, checked):
@@ -164,7 +157,9 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
                 self.zoommButton.setDisabled(True)
 
     def clearOutput(self):
-        points.clear()
+        global x, y
+        x = []
+        y = []
         self.output()
 
     def scan(self):
@@ -187,7 +182,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.rotaterButton.setEnabled(True)  # Включаем кнопку
 
 
-# Основная программа
+# Основной скрипт
 if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем, то:
     app = QtWidgets.QApplication(argv)  # Создаём новый экземпляр QApplication
     window = MainWindow()  # Создаём объект окна из класса MainWindow

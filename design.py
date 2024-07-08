@@ -334,12 +334,14 @@ class Ui_MainWindow(object):
         self.zoompButton.setObjectName("zoompButton")
         self.horizontalLayout.addWidget(self.zoompButton)
         self.verticalLayout.addWidget(self.widget)
-        self.graphicsView = QtWidgets.QGraphicsView(parent=self.centralwidget)
-        self.graphicsView.setStyleSheet("")
-        self.graphicsView.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
-        self.graphicsView.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.graphicsView.setObjectName("graphicsView")
-        self.verticalLayout.addWidget(self.graphicsView)
+        self.graphWidget = PlotWidget(parent=self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.graphWidget.sizePolicy().hasHeightForWidth())
+        self.graphWidget.setSizePolicy(sizePolicy)
+        self.graphWidget.setObjectName("graphWidget")
+        self.verticalLayout.addWidget(self.graphWidget)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -359,6 +361,7 @@ class Ui_MainWindow(object):
         self.zoommButton.setToolTip(_translate("MainWindow", "Уменьшить масштаб"))
         self.zoomrButton.setToolTip(_translate("MainWindow", "Сбросить масштаб"))
         self.zoompButton.setToolTip(_translate("MainWindow", "Увеличить масштаб"))
+from pyqtgraph import PlotWidget
 
 
 if __name__ == "__main__":
