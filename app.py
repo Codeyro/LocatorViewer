@@ -6,7 +6,9 @@ from PyQt6 import QtWidgets
 from PyQt6.QtCore import pyqtSignal, QObject
 import threading
 import pyqtgraph as pg
+import pyqtgraph.exporters
 import serial.tools.list_ports
+import tkinter.filedialog as fd
 import design
 
 # Задаём переменные
@@ -14,8 +16,6 @@ selectedPort = None
 selectedSpeed = 9600
 ser = serial.Serial()
 points = []
-x = []
-y = []
 
 
 # Создаём классы
@@ -47,20 +47,25 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.scanner = None
         self.graphWidget.setBackground('#eef0f0')
         self.graphWidget.showGrid(x=True, y=True)
+        self.graphWidget.hideButtons()
+        self.graphWidget.setAspectLocked()
         self.rotatelButton.setDisabled(True)
         self.rotaterButton.setDisabled(True)
         self.runButton.setDisabled(True)
+        self.menuWidget.setVisible(False)
+        self.menuButton.hide()
         self.updateButton.clicked.connect(self.updatePorts)
         self.rotatelButton.pressed.connect(self.turnl)
         self.rotaterButton.pressed.connect(self.turnr)
         self.runButton.clicked.connect(self.scan)
         self.connectButton.clicked.connect(self.connect)
         self.clearButton.clicked.connect(self.clearOutput)
+        self.exportButton.clicked.connect(self.export)
+        self.resetButton.clicked.connect(lambda: pg.getPlotItem().enableAutoRange())
         self.updatePorts()  # Обновляем порты
         self.clearOutput()  # Очищаем вывод
 
     def output(self):
-        global x, y
         x = []
         y = []
         if len(points) > 0:
@@ -68,8 +73,8 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
                 a = str(i).split('%')
                 b = 0.0174533 * float(a[0])
                 if float(a[1]) < 5000:
-                    x.append(sin(b) * (float(a[1]) + 30))
-                    y.append(cos(b) * (float(a[1]) + 30))
+                    x.append(sin(b) * float(a[1]))
+                    y.append(cos(b) * float(a[1]))
         pen = pg.mkPen(color=(10, 50, 255), width=3)
         self.graphWidget.clear()
         self.graphWidget.plot(x, y, pen=pen, symbol="o", symbolSize=10, symbolBrush="b", symbolPen=None)
@@ -109,6 +114,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
             self.rotatelButton.setEnabled(True)
             self.rotaterButton.setEnabled(True)
             self.runButton.setEnabled(True)
+            self.runButton.setToolTip('Отключиться')
         else:
             ser.close()
             self.rotatelButton.setDisabled(True)
@@ -116,6 +122,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
             self.runButton.setDisabled(True)
             self.combobox.setEnabled(True)
             self.updateButton.setEnabled(True)
+            self.runButton.setToolTip('Подключиться')
 
     @staticmethod
     def turnr():
@@ -132,9 +139,18 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         ser.write(b" ")
 
     def clearOutput(self):
-        global x, y
-        x, y = [], []
+        global points
+        points = []
         self.output()
+
+    def export(self):
+        filetypes = (("Изображение", "*.png"), ("Любой", "*"))
+        filename = fd.asksaveasfilename(title='Сохранить график...', initialfile='LV export', initialdir='/',
+                                        filetypes=filetypes)
+        if filename:
+            filename = str(filename) + '.png'
+            exporter = pg.exporters.ImageExporter(self.graphWidget.plotItem)
+            exporter.export(filename)  # save to file
 
     def scan(self):
         self.runButton.setDisabled(True)  # Выключаем кнопку

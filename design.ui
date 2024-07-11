@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Locator viewer 1.0</string>
+   <string>Locator viewer 2.0</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -62,15 +62,17 @@ border: 1px solid rgb(160, 160, 160);
 border-left: none;
 border-top-right-radius: 4px;
 border-bottom-right-radius: 4px;
-image: url(images/connect.png);
+image: url(images/connect.svg);
+padding: 5px;
 }
 
 QPushButton#connectButton:checked {
 background-color: rgba(6, 192, 37, 40);
-image: url(images/disconnect.png);
+image: url(images/disconnect.svg);
+
 }
 
-QPushButton#runButton, QPushButton#clearButton, QPushButton#settingsButton, QPushButton#exportButton {
+QPushButton#runButton, QPushButton#clearButton, QPushButton#menuButton, QPushButton#exportButton, QPushButton#resetButton  {
 border: 1px solid rgb(160, 160, 160);
 border-radius: 4px;
 }
@@ -228,35 +230,19 @@ background-color: rgba(183, 183, 184, 255);
         <number>0</number>
        </property>
        <property name="leftMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
-        <number>3</number>
+        <number>4</number>
        </property>
        <property name="rightMargin">
-        <number>4</number>
+        <number>5</number>
        </property>
        <property name="bottomMargin">
-        <number>4</number>
+        <number>5</number>
        </property>
        <item>
-        <spacer name="horizontalSpacer_7">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>5</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="settingsButton">
+        <widget class="QPushButton" name="menuButton">
          <property name="minimumSize">
           <size>
            <width>30</width>
@@ -288,10 +274,13 @@ background-color: rgba(183, 183, 184, 255);
            <height>18</height>
           </size>
          </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer_6">
+        <spacer name="menuSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -301,7 +290,7 @@ background-color: rgba(183, 183, 184, 255);
          <property name="sizeHint" stdset="0">
           <size>
            <width>5</width>
-           <height>20</height>
+           <height>10</height>
           </size>
          </property>
         </spacer>
@@ -369,12 +358,12 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>images/update.png</normaloff>images/update.png</iconset>
+           <normaloff>images/update.svg</normaloff>images/update.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
-           <width>20</width>
-           <height>20</height>
+           <width>15</width>
+           <height>15</height>
           </size>
          </property>
         </widget>
@@ -389,12 +378,9 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="maximumSize">
           <size>
-           <width>30</width>
+           <width>29</width>
            <height>30</height>
           </size>
-         </property>
-         <property name="toolTip">
-          <string>Подключиться</string>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
@@ -404,8 +390,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>20</width>
-           <height>20</height>
+           <width>18</width>
+           <height>18</height>
           </size>
          </property>
          <property name="checkable">
@@ -423,7 +409,7 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>10</width>
+           <width>5</width>
            <height>10</height>
           </size>
          </property>
@@ -458,8 +444,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>20</width>
-           <height>20</height>
+           <width>18</width>
+           <height>18</height>
           </size>
          </property>
         </widget>
@@ -493,8 +479,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>20</width>
-           <height>20</height>
+           <width>18</width>
+           <height>18</height>
           </size>
          </property>
         </widget>
@@ -509,7 +495,7 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>10</width>
+           <width>5</width>
            <height>10</height>
           </size>
          </property>
@@ -570,6 +556,57 @@ background-color: rgba(183, 183, 184, 255);
         </spacer>
        </item>
        <item>
+        <widget class="QPushButton" name="resetButton">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>Сбросить масштаб</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>images/reset.svg</normaloff>images/reset.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QPushButton" name="exportButton">
          <property name="minimumSize">
           <size>
@@ -584,7 +621,7 @@ background-color: rgba(183, 183, 184, 255);
           </size>
          </property>
          <property name="toolTip">
-          <string>Очистить вывод</string>
+          <string>Сохранить график</string>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
@@ -598,8 +635,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>18</width>
-           <height>18</height>
+           <width>20</width>
+           <height>20</height>
           </size>
          </property>
         </widget>
@@ -615,7 +652,7 @@ background-color: rgba(183, 183, 184, 255);
          <property name="sizeHint" stdset="0">
           <size>
            <width>5</width>
-           <height>20</height>
+           <height>10</height>
           </size>
          </property>
         </spacer>
@@ -635,7 +672,7 @@ background-color: rgba(183, 183, 184, 255);
           </size>
          </property>
          <property name="toolTip">
-          <string>Очистить вывод</string>
+          <string>Очистить график</string>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
@@ -659,17 +696,77 @@ background-color: rgba(183, 183, 184, 255);
      </widget>
     </item>
     <item>
-     <widget class="PlotWidget" name="graphWidget" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>1</number>
       </property>
-      <property name="cursor">
-       <cursorShape>CrossCursor</cursorShape>
-      </property>
-     </widget>
+      <item>
+       <widget class="QWidget" name="menuWidget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <property name="leftMargin">
+          <number>4</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
+         <property name="bottomMargin">
+          <number>4</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="PlotWidget" name="graphWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="cursor">
+         <cursorShape>CrossCursor</cursorShape>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
