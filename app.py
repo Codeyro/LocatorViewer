@@ -61,7 +61,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.connectButton.clicked.connect(self.connect)
         self.clearButton.clicked.connect(self.clearOutput)
         self.exportButton.clicked.connect(self.export)
-        self.resetButton.clicked.connect(lambda: pg.getPlotItem().enableAutoRange())
+        self.resetButton.clicked.connect(lambda: self.graphWidget().enableAutoRange())
         self.updatePorts()  # Обновляем порты
         self.clearOutput()  # Очищаем вывод
 
