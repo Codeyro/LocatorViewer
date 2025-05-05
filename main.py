@@ -1,5 +1,4 @@
 import threading
-import tkinter.filedialog as fd
 from math import sin, cos
 from sys import argv
 from time import sleep
@@ -7,7 +6,7 @@ from time import sleep
 import pyqtgraph as pg
 import pyqtgraph.exporters
 import serial.tools.list_ports
-from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QMainWindow, QFileDialog, QApplication
 from PyQt6.QtCore import pyqtSignal, QObject
 
 import design
@@ -46,7 +45,7 @@ class Scanner(QObject):
         self.finished.emit()
 
 
-class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
+class MainWindow(QMainWindow, design.Ui_MainWindow):
     def __init__(self):  # Функция для доступа к переменным, методам и т.д. в файле design.py
         super().__init__()
         self.setupUi(self)  # Инициализация дизайна
@@ -163,13 +162,10 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.output()
 
     def export(self):
-        filetypes = (("Изображение", "*.png"), ("Любой", "*"))
-        filename = fd.asksaveasfilename(title='Сохранить график...', initialfile='LV export', initialdir='/',
-                                        filetypes=filetypes)
-        if filename:
-            filename = str(filename) + '.png'
+        file = QFileDialog.getSaveFileName(caption='Сохранение графика', filter='(*.png)')
+        if file:
             exporter = pg.exporters.ImageExporter(self.graphWidget.plotItem)
-            exporter.export(filename)  # save to file
+            exporter.export(file[0])  # Экспорт в файл
 
     def scan(self):
         try:
@@ -202,7 +198,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
 
 if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем, то:
-    app = QtWidgets.QApplication(argv)  # Создаём новый экземпляр QApplication
+    app = QApplication(argv)  # Создаём новый экземпляр QApplication
     window = MainWindow()  # Создаём объект окна из класса MainWindow
     window.show()  # Показываем окно
     app.exec()  # Запускаем приложение
