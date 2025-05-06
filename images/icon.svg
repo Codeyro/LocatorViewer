@@ -1,21 +1,27 @@
 <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="500" height="500" rx="90" fill="url(#paint0_linear_888_334)"/>
-<g filter="url(#filter0_d_888_334)">
+<rect width="500" height="500" rx="90" fill="url(#paint0_linear_1_10)"/>
+<g filter="url(#filter0_di_1_10)">
 <path d="M115 115V385H316.973" stroke="white" stroke-width="63.2812" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M223.633 115V276.053L385 115" stroke="#495461" stroke-width="63.2812" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
-<filter id="filter0_d_888_334" x="33.3594" y="37.3594" width="433.281" height="433.281" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_di_1_10" x="23.3594" y="27.3594" width="453.281" height="453.281" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="4"/>
-<feGaussianBlur stdDeviation="25"/>
+<feGaussianBlur stdDeviation="30"/>
 <feComposite in2="hardAlpha" operator="out"/>
 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_888_334"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_888_334" result="shape"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_10"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_10" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="6" dy="6"/>
+<feGaussianBlur stdDeviation="9.15"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_10"/>
 </filter>
-<linearGradient id="paint0_linear_888_334" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear_1_10" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
 <stop stop-color="#05A925"/>
 <stop offset="1" stop-color="#40D300"/>
 </linearGradient>

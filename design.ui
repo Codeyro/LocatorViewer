@@ -57,12 +57,12 @@ border-left: none;
 border-top-right-radius: 4px;
 border-bottom-right-radius: 4px;
 image: url(images/connect.svg);
-padding: 5px;
+padding: 6px;
 }
 
 QPushButton#connectButton:checked {
-background-color: rgba(6, 192, 37, 40);
 image: url(images/disconnect.svg);
+background-color: rgba(6, 192, 37, 40);
 }
 
 QPushButton#runButton, QPushButton#clearButton, QPushButton#menuButton, QPushButton#exportButton,
@@ -98,6 +98,7 @@ background-color: rgba(6, 192, 37, 40);
 
 
 QComboBox {
+background-color: rgb(255, 255, 255);
 border: 1px solid rgb(160, 160, 160);
 border-top-left-radius: 4px;
 border-bottom-left-radius: 4px;
@@ -123,13 +124,13 @@ border: 0px;
 }
 
 QComboBox::down-arrow {
-image: url(images/arrow_down.png);
+image: url(images/arrow_down.svg);
 width: 10px;
 margin-right: 14px;
 }
 
 QComboBox::down-arrow:on {
-image: url(images/arrow_up.png);
+image: url(images/arrow_up.svg);
 width: 10px;
 margin-right: 14px;
 }
@@ -137,10 +138,13 @@ margin-right: 14px;
 QComboBox QAbstractItemView {
 border: none;
 outline: none;
-background-color: rgba(255, 255, 255, 0);
+background-color: rgb(255, 255, 255);
 text-size: 12px;
 color: rgb(0, 0, 0);
-border-radius: 4px;
+}
+
+QComboBox QListView {
+border: none;
 }
 
 QComboBox QAbstractItemView::item {
@@ -152,15 +156,11 @@ color: rgb(0, 0, 0);
 border-radius: 4px;
 margin: 4px;
 padding-left: 8px;
+background-color: transparent;
 }
 
 QComboBox QAbstractItemView::item:hover{
 background-color:  rgb(238, 238, 239);
-}
-
-QComboBox QListView {
-border: none;   
-background: none;
 }
 
 
@@ -329,8 +329,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>18</width>
-           <height>18</height>
+           <width>16</width>
+           <height>16</height>
           </size>
          </property>
          <property name="checkable">
@@ -517,8 +517,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>18</width>
-           <height>18</height>
+           <width>16</width>
+           <height>16</height>
           </size>
          </property>
         </widget>
@@ -568,8 +568,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>18</width>
-           <height>18</height>
+           <width>16</width>
+           <height>16</height>
           </size>
          </property>
         </widget>
@@ -625,8 +625,8 @@ background-color: rgba(183, 183, 184, 255);
          </property>
          <property name="iconSize">
           <size>
-           <width>18</width>
-           <height>18</height>
+           <width>16</width>
+           <height>16</height>
           </size>
          </property>
         </widget>

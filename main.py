@@ -162,7 +162,7 @@ class MainWindow(QMainWindow, design.Ui_MainWindow):
         self.output()
 
     def export(self):
-        file = QFileDialog.getSaveFileName(caption='Сохранение графика', filter='(*.png)')
+        file = QFileDialog.getSaveFileName(caption='Сохранение графика', filter='Изображение (*.png)')
         if file:
             exporter = pg.exporters.ImageExporter(self.graphWidget.plotItem)
             exporter.export(file[0])  # Экспорт в файл

@@ -1,13 +1,12 @@
 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_509_3)">
-        <rect y="60" width="100" height="10" rx="5" fill="#4D4D4D"/>
-        <rect y="30" width="100" height="10" rx="5" fill="#4D4D4D"/>
-        <rect width="100" height="10" rx="5" fill="#4D4D4D"/>
-        <rect y="90" width="100" height="10" rx="5" fill="#4D4D4D"/>
-    </g>
-    <defs>
-        <clipPath id="clip0_509_3">
-            <rect width="100" height="100" fill="white"/>
-        </clipPath>
-    </defs>
+<g clip-path="url(#clip0_2_34)">
+<path d="M6 94H94" stroke="#4D4D4D" stroke-width="12" stroke-linecap="round"/>
+<path d="M6 6H94" stroke="#4D4D4D" stroke-width="12" stroke-linecap="round"/>
+<path d="M6 50H94" stroke="#4D4D4D" stroke-width="12" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_2_34">
+<rect width="100" height="100" fill="white"/>
+</clipPath>
+</defs>
 </svg>

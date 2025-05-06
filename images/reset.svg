@@ -1,60 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-
-<svg
-        width="100"
-        height="100"
-        viewBox="0 0 3 3"
-   fill="none"
-   version="1.1"
-   id="svg2"
-   sodipodi:docname="reset.svg"
-   xml:space="preserve"
-   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"><defs
-     id="defs2" /><sodipodi:namedview
-     id="namedview2"
-     pagecolor="#ffffff"
-     bordercolor="#111111"
-     borderopacity="1"
-     inkscape:showpageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="1"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="3.78"
-     inkscape:cx="74.603175"
-     inkscape:cy="39.021164"
-     inkscape:window-width="1680"
-     inkscape:window-height="979"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" /><path
-        style="color:#000000;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.1294;stroke-linecap:round;-inkscape-stroke:none"
-        d="m 1.3057997,0.73933973 c 0,1.15028507 0,1.15028507 0,1.15028507"
-        id="path9"/>
-    <path
-            style="color:#000000;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.1294;stroke-linecap:round;-inkscape-stroke:none"
-            d="m 1.8809869,1.3143559 c -1.15028508,0 -1.15028508,0 -1.15028508,0"
-            id="path7"/>
-    <path
-            style="fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.36;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
-            d="M 2.4989675,2.4950949 2.82,2.82"
-            id="path4"
-            sodipodi:nodetypes="cc"/>
-    <g
-            id="g1"
-            transform="matrix(1.0012699,0,0,0.99999563,-4.8891249e-4,0)"><path
-       id="path3"
-       style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.00531858"
-       d="M 1.3049718,-1.626795e-8 A 1.3044821,1.306147 0 0 0 4.8829241e-4,1.3061457 1.3044821,1.306147 0 0 0 1.3049718,2.6122914 1.3044821,1.306147 0 0 0 2.6094551,1.3061457 1.3044821,1.306147 0 0 0 1.3049718,-1.626795e-8 Z M 1.3049618,0.51848815 a 0.11499679,0.11374788 0 0 1 0.1149974,0.11374846 v 0.091446 a 0.60138213,0.5948509 0 0 1 0.473851,0.46885199 h 0.092757 A 0.11499679,0.11374788 0 0 1 2.1015649,1.3062831 0.11499679,0.11374788 0 0 1 1.9865676,1.4200314 H 1.8937508 A 0.60138213,0.5948509 0 0 1 1.4199592,1.8886089 v 0.09172 A 0.11499679,0.11374788 0 0 1 1.3049618,2.094078 0.11499679,0.11374788 0 0 1 1.1899645,1.9803293 V 1.8886186 A 0.60138213,0.5948509 0 0 1 0.71608365,1.4200314 H 0.62336593 A 0.11499679,0.11374788 0 0 1 0.50836855,1.3062831 0.11499679,0.11374788 0 0 1 0.62336593,1.1925346 h 0.0926582 A 0.60138213,0.5948509 0 0 1 1.1899645,0.72367279 V 0.63223661 A 0.11499679,0.11374788 0 0 1 1.3049618,0.51848815 Z" />
-        <ellipse
-                style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.315452;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
-                id="path5"
-                cx="1.3049717"
-                cy="1.3061457"
-                rx="0.25878268"
-                ry="0.25597221"/></g></svg>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2_73)">
+<path d="M85 85L94 94" stroke="#4D4D4D" stroke-width="12" stroke-linecap="round"/>
+<path d="M45 0C69.8528 0 90 20.1472 90 45C90 69.8528 69.8528 90 45 90C20.1472 90 0 69.8528 0 45C0 20.1472 20.1472 0 45 0ZM45 14.7207C41.5322 14.7207 38.7207 17.5322 38.7207 21V23.9111C31.62 26.0222 26.0203 31.6204 23.9092 38.7207H21C17.5322 38.7207 14.7207 41.5322 14.7207 45C14.7207 48.4678 17.5322 51.2793 21 51.2793H23.9092C26.0204 58.3792 31.6201 63.9767 38.7207 66.0879V69L38.7295 69.3232C38.8977 72.6408 41.6406 75.2793 45 75.2793C48.3594 75.2793 51.1023 72.6408 51.2705 69.3232L51.2793 69V66.0879C58.3799 63.9767 63.9796 58.3792 66.0908 51.2793H69L69.3232 51.2705C72.6408 51.1023 75.2793 48.3594 75.2793 45C75.2793 41.6406 72.6408 38.8977 69.3232 38.7295L69 38.7207H66.0908C63.9797 31.6204 58.38 26.0222 51.2793 23.9111V21C51.2793 17.5322 48.4678 14.7207 45 14.7207Z" fill="#4D4D4D"/>
+<circle cx="45" cy="45" r="9" fill="#4D4D4D"/>
+</g>
+<defs>
+<clipPath id="clip0_2_73">
+<rect width="100" height="100" fill="white"/>
+</clipPath>
+</defs>
+</svg>
