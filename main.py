@@ -7,7 +7,7 @@ import pyqtgraph as pg
 import pyqtgraph.exporters
 import serial.tools.list_ports
 from PyQt6.QtWidgets import QMainWindow, QFileDialog, QApplication
-from PyQt6.QtCore import pyqtSignal, QObject
+from PyQt6.QtCore import pyqtSignal, QObject, QSize
 
 import design
 
@@ -57,6 +57,7 @@ class MainWindow(QMainWindow, design.Ui_MainWindow):
         self.rotatelButton.setDisabled(True)
         self.rotaterButton.setDisabled(True)
         self.runButton.setDisabled(True)
+        self.connectButton.setIconSize(QSize(16, 16))
         self.updateButton.clicked.connect(self.updatePorts)
         self.rotaterButton.pressed.connect(self.turnRight)
         self.rotatelButton.pressed.connect(self.turnLeft)
