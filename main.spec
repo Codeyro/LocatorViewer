@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('images', 'images')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -33,7 +33,8 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='resources/app-icon.ico'
+    icon='resources/app-icon.ico',
+    contents_directory='.'
 )
 
 coll = COLLECT(
@@ -43,5 +44,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='Locator Viewer 1.0.0',
+    name='Locator Viewer',
 )

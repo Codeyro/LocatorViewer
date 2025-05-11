@@ -2,6 +2,7 @@ import threading
 from math import sin, cos
 from sys import argv
 from time import sleep
+import os
 
 import pyqtgraph as pg
 import pyqtgraph.exporters
@@ -17,6 +18,16 @@ selectedPort = None
 selectedSpeed = 9600
 ser = serial.Serial()
 points = []
+
+
+basedir = os.path.dirname(__file__)
+
+try:
+    from ctypes import windll  # Only exists on Windows.
+    my_app_id = 'CodeyroProduction.LocatorViewer'
+    windll.shell32.SetCurrentProcessExplicitAppUserModelID(my_app_id)
+except ImportError:
+    pass
 
 
 # Создаём классы
@@ -123,7 +134,7 @@ class MainWindow(QMainWindow, design.Ui_MainWindow):
                 self.rotatelButton.setEnabled(True)
                 self.rotaterButton.setEnabled(True)
                 self.runButton.setEnabled(True)
-                self.connectButton.setToolTip('Отключиться')
+                self.connectButton.setToolTip('Отключиться (ALT+C)')
         else:
             self.disconnect()
 
@@ -136,7 +147,7 @@ class MainWindow(QMainWindow, design.Ui_MainWindow):
         self.comboBox.setEnabled(True)
         self.updateButton.setEnabled(True)
         self.connectButton.setChecked(False)
-        self.connectButton.setToolTip('Подключиться')
+        self.connectButton.setToolTip('Подключиться (ALT+C)')
         self.updatePorts()
 
     def turnRight(self):
