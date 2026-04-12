@@ -5,9 +5,17 @@ OutFile "LocatorViewerInstaller.exe"
 InstallDir "$PROGRAMFILES64\LocatorViewer"
 RequestExecutionLevel admin
 SetCompressor /SOLID lzma
+
+!ifndef APP_VERSION
+    !define APP_VERSION "0.0.0.0"
+!endif
+
+VIProductVersion "${APP_VERSION}"
+VIAddVersionKey "FileVersion" "${APP_VERSION}"
+VIAddVersionKey "ProductVersion" "${APP_VERSION}"
+
 VIAddVersionKey "ProductName" "Locator Viewer"
 VIAddVersionKey "CompanyName" "Codeyro Production"
-VIProductVersion "1.2.5.0"
 VIAddVersionKey "FileDescription" "Установщик Locator Viewer"
 VIAddVersionKey "LegalCopyright" "© 2026 Codeyro Production"
 
