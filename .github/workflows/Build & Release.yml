@@ -37,9 +37,9 @@ jobs:
         run: echo "VERSION=$($env:GITHUB_REF -replace 'refs/tags/v', '')" | Out-String | Tee-Object -Variable out; echo $out
       
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
-          files: LocatorViewerSetup.exe
+          files: LocatorViewerInstaller.exe
           tag_name: "${{ github.event.repository.name }} ${{ github.ref_name }}"
           draft: false
           prerelease: false

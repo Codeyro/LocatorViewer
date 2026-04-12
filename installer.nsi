@@ -1,7 +1,7 @@
 !include "MUI2.nsh"
 
 Name "Locator Viewer"
-OutFile "LocatorViewerSetup.exe"
+OutFile "LocatorViewerInstaller.exe"
 InstallDir "$PROGRAMFILES64\LocatorViewer"
 RequestExecutionLevel admin
 SetCompressor /SOLID lzma
