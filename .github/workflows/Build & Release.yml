@@ -34,7 +34,7 @@ jobs:
       
       - name: Extract version
         id: version
-        run: echo "VERSION=$($env:GITHUB_REF -replace 'refs/tags/v', '')" | Out-String | Tee-Object -Variable out; echo $out
+        run: echo "VERSION=$($env:GITHUB_REF -replace '${{ github.event.repository.name }} v', '')" | Out-String | Tee-Object -Variable out; echo $out
       
       - name: Create Release
         uses: softprops/action-gh-release@v1
