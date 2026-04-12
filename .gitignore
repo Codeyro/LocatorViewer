@@ -5,3 +5,5 @@
 /*.smm
 /__pycache__/
 *.egg-info/
+*.spec.bak
+LocatorViewerSetup.exe

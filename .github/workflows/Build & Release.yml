@@ -1,0 +1,48 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+      
+      - name: Build with PyInstaller
+        run: pyinstaller main.spec --distpath ./dist --buildpath ./build --workpath ./build
+      
+      - name: Create installer
+        run: |
+          choco install nsis -y
+          & 'C:\Program Files (x86)\NSIS\makensis.exe' installer.nsi
+      
+      - name: Extract version
+        id: version
+        run: echo "VERSION=$($env:GITHUB_REF -replace 'refs/tags/v', '')" | Out-String | Tee-Object -Variable out; echo $out
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: LocatorViewerSetup.exe
+          tag_name: ${{ github.ref }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
