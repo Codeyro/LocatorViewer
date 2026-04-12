@@ -4,9 +4,11 @@ Name "Locator Viewer"
 OutFile "LocatorViewerSetup.exe"
 InstallDir "$PROGRAMFILES\LocatorViewer"
 
+!insertmacro MUI_PAGE_WELCOME
 !define MUI_ABORTWARNING
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
+!insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_LANGUAGE "English"
 
 Section "Install"
