@@ -26,7 +26,7 @@ jobs:
           pip install pyinstaller
       
       - name: Build with PyInstaller
-        run: pyinstaller main.spec --distpath ./dist --buildpath ./build --workpath ./build
+        run: pyinstaller main.spec --distpath ./dist --workpath ./build
       
       - name: Create installer
         run: |
