@@ -16,9 +16,9 @@ A graphical application for scanning and visualizing radar data using a connecte
 - **Serial Port Connection:** Connect to compatible radar devices via serial port
 - **Real-time Scanning:** Perform scans and visualize data in real-time
 - **Interactive Controls:**
-    - Rotate radar left/right
-    - Start/stop scanning
-    - Clear and reset visualization
+  - Rotate radar left/right
+  - Start/stop scanning
+  - Clear and reset visualization
 - **Data Export:** Save scan results as PNG images
 - **Responsive UI:** Built with PyQt6 for smooth user experience
 
@@ -26,9 +26,9 @@ A graphical application for scanning and visualizing radar data using a connecte
 
 - Python 3.7+
 - Required packages:
-    - PyQt6
-    - pyqtgraph
-    - pyserial
+  - PyQt6
+  - pyqtgraph
+  - pyserial
 
 ## Installation
 
