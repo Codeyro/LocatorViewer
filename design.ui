@@ -140,7 +140,7 @@ QComboBox QAbstractItemView {
 	border: none;
 	outline: none;
 	background-color: rgb(255, 255, 255);
-	text-size: 12px;
+	font-size: 12px;
 	color: rgb(0, 0, 0);
 }
 
@@ -152,7 +152,7 @@ QComboBox QAbstractItemView::item {
 	border: none;
 	outline: none;
 	height: 30px;
-	text-size: 12px;
+	font-size: 12px;
 	color: rgb(0, 0, 0);
 	border-radius: 4px;
 	margin: 4px;
